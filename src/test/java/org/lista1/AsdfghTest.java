@@ -5,9 +5,18 @@ import org.junit.*;
 public class AsdfghTest {
    @Test
    public void testowanie(){
-      assert Main.square(2) == 4;
-      assert Main.square(3) == 9;
-      assert Main.square(4) == 16;
+      NotacjaPolska notacjaPolska = new NotacjaPolska();
+      notacjaPolska.write(5);
+      notacjaPolska.write(10);
+      notacjaPolska.write("DIVIDE");
+      System.out.println(notacjaPolska.calculate());
+   }
+
+   @Test
+   public void testowanie2(){
+      NotacjaPolska notacjaPolska = NotacjaParser.parse("12 2 3 4 × 10 5 / + × +");
+      System.out.println(notacjaPolska.calculate());
+
    }
 
 }
