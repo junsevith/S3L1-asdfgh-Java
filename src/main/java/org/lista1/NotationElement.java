@@ -1,7 +1,7 @@
 package org.lista1;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.BiFunction;
 
 public class NotationElement {
@@ -18,7 +18,7 @@ public class NotationElement {
    /**
     * Map with currently implemented operators.
     */
-   private static final Map<String, BiFunction<Double, Double, Double>> OPERATOR_MAP = new HashMap<>();
+   private static final Map<String, BiFunction<Double, Double, Double>> OPERATOR_MAP = new ConcurrentHashMap<>();
 
    static {
       OPERATOR_MAP.put("ADD", Double::sum);
@@ -35,12 +35,12 @@ public class NotationElement {
    /**
     * Operator type of this object.
     */
-   private String operator = null;
+   private final String operator;
 
    /**
     * Number value of this object.
     */
-   private Double value = null;
+   private final  Double value;
 
    /**
     * Creates operator type notation element.
@@ -49,6 +49,7 @@ public class NotationElement {
     */
    public NotationElement(final String operator) {
       this.operator = operator;
+      this.value = null;
       type = Type.OPERATOR;
    }
 
@@ -58,6 +59,7 @@ public class NotationElement {
     * @param number number
     */
    public NotationElement(final Number number) {
+      this.operator = null;
       value = number.doubleValue();
       type = Type.NUMBER;
    }
@@ -97,17 +99,18 @@ public class NotationElement {
     */
    @Override
    public String toString() {
+      String retval;
       switch (type) {
          case NUMBER -> {
-            return value.toString();
+            retval = value.toString();
          }
          case OPERATOR -> {
-            return operator;
+            retval = operator;
          }
          default -> {
-            return null;
+            retval = null;
          }
       }
-
+      return retval;
    }
 }

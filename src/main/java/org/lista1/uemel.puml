@@ -1,0 +1,11 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+User -> Parser: string data
+Parser -> PolishNotation: values and operators
+PolishNotation -> LinkedList: Colelcted data
+LinkedList -> PolishNotation: saved data
+PolishNotation -> User: Calculated value of notation
+@enduml

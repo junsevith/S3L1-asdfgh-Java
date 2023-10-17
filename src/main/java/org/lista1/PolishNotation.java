@@ -10,8 +10,10 @@ public class PolishNotation {
     */
    private final Deque<NotationElement> napis = new LinkedList<>();
 
+
    /**
     * Adds an element (number) to notation.
+    *
     * @param number Element to be added
     */
    public void write(final Number number) {
@@ -20,6 +22,7 @@ public class PolishNotation {
 
    /**
     * Adds an element (operator) to notation.
+    *
     * @param operation Element to be added
     */
    public void write(final String operation) {
@@ -28,6 +31,7 @@ public class PolishNotation {
 
    /**
     * Calculates value of the current notation.
+    *
     * @return Calculated value
     */
    public Double calculate() {
