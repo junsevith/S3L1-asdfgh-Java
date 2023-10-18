@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class ConsoleHandler {
    public static void main(String[] args) {
-      System.out.println("Podaj działanie w notacji polskiej:");
+      System.out.println("Podaj działanie w notacji polskiej: oeo");
       Scanner scanner = new Scanner(System.in);
       while (true) {
          String string = scanner.nextLine();
